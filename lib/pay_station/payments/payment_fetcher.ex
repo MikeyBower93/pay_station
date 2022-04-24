@@ -29,6 +29,6 @@ defmodule PayStation.Payments.PaymentFetcher do
   end
 
   defp schedule_work do
-    Process.send_after(self(), :work, 1000)
+    Process.send_after(self(), :work, 10000)
   end
 end

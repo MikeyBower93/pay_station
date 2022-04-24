@@ -1,11 +1,18 @@
-# Script for populating the database. You can run it as:
-#
-#     mix run priv/repo/seeds.exs
-#
-# Inside the script, you can read and write to any of your
-# repositories directly:
-#
-#     PayStation.Repo.insert!(%PayStation.SomeSchema{})
-#
-# We recommend using the bang functions (`insert!`, `update!`
-# and so on) as they will fail if something goes wrong.
+PayStation.Repo.query!("ALTER SEQUENCE card_holders_id_seq RESTART WITH 1")
+PayStation.Repo.delete_all(PayStation.Expenses.Cardholder)
+PayStation.Repo.delete_all(PayStation.Expenses.Company)
+
+record_company = PayStation.Repo.insert!(%PayStation.Expenses.Company{
+  name: "House of records Ltd"
+})
+
+vegetable_company = PayStation.Repo.insert!(%PayStation.Expenses.Company{
+  name: "Organic Veg Ltd"
+})
+
+Enum.each(1..10, fn _ ->
+  PayStation.Repo.insert!(%PayStation.Expenses.Cardholder{
+    name: Faker.Person.name,
+    company_id: Faker.Util.pick([record_company.id, vegetable_company.id])
+  })
+end)

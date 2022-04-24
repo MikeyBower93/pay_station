@@ -7,7 +7,7 @@ defmodule PayStation.Payments.External.PaymentProcessor do
         %Transaction{
           id: Faker.UUID.v4(),
           quantity: Faker.random_between(0, 1_000_000),
-          card_id: Faker.random_between(0, 10),
+          card_id: Faker.random_between(1, 10),
           merchant: Faker.Company.name
         }
     end)
