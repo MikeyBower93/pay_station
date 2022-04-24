@@ -1,6 +1,6 @@
 # PayStation
 
-## Intro
+## Intro
 
 This is a project used to demonstrate how you can use a message queue (kafka in this case), to keep low coupling in an elixir monolith, using contexts/domain driven development.
 
