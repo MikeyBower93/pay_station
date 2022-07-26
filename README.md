@@ -21,3 +21,6 @@ We solve this in a robust an loosely coupled manner by using kafka to have a mes
 3. Run `docker compose up`, this will start the services (`postgres` and `kafka` locally).
 4. Run `setup.sh` which will create the topic in kafka.
 5. Run `mix phx.server` to start the server.
+
+## Running on WSL
+- Build essentials needed `sudo apt-get install build-essential`
